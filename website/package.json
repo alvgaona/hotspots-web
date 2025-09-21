@@ -1,18 +1,21 @@
 {
-  "name": "website",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/netlify": "^6.5.10",
-    "astro": "^5.13.7"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.2.4"
-  }
+	"name": "website",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/netlify": "^6.5.10",
+		"@fontsource-variable/lexend": "^5.2.11",
+		"@tailwindcss/vite": "^4.1.13",
+		"astro": "^5.13.7",
+		"tailwindcss": "^4.1.13"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.4"
+	}
 }
