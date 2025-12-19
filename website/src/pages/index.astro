@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import solarPanelLogo from "../assets/solar-panel-logo.png";
+import hotspotDetectionVideo from "../assets/hotspot-detection.mp4";
 import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/lexend";
 ---
@@ -12,18 +13,18 @@ import "@fontsource-variable/lexend";
             <a href="https://github.com/alvgaona/vxc">GitHub</a>
         </header>
     </nav>
-    <div class="flex justify-center my-12">
+    <div class="flex flex-col items-center my-12">
+        <div class="flex flex-col items-center gap-2 mx-32 px-12">
+            <div class="flex flex-col gap-4">
+                <Image class="self-center" src={solarPanelLogo} alt="A solar panel" height="100" />
+                <h1 class="font-light text-4xl text-center">Solar Panel Hot Spots Detection Techniques</h1>
+            </div>
+            <h2 class="font-extralight text-sm">
+                A computer vision project at Universidad Politécnica de Madrid
+            </h2>
+        </div>
         <main class="mx-64 px-24">
-            <div class="flex flex-col gap-6">
-                <div class="flex flex-col items-center gap-2">
-                    <div class="flex flex-col gap-4">
-                        <Image class="self-center" src={solarPanelLogo} alt="A solar panel" height="100" />
-                        <h1 class="font-light text-4xl">Solar Panel Hot Spots Detection Techniques</h1>
-                    </div>
-                    <h2 class="font-extralight text-sm">
-                        A computer vision project at Universidad Politécnica de Madrid
-                    </h2>
-                </div>
+            <div class="flex flex-col gap-6 mt-6">
                 <div>
                     <div class="flex justify-between font-extralight pb-2">
                         <span>Computer Vision</span>
@@ -33,34 +34,61 @@ import "@fontsource-variable/lexend";
                         <div class="flex flex-col self-center font-extralight text-sm justify-center items-center">
                             <div class="flex gap-4">
                                 <span>Alvaro J. Gaona</span>
-                                <span>Lucas Gomez Velayos</span>
-                                <span>Pedro Alvarez Monteagudo</span>
+                                <span>Lucas Gomez&dash;Velayos</span>
+                                <span>Pedro Alvarez&dash;Monteagudo</span>
                             </div>
                             <div class="flex gap-4">
-                                <span>José D. Valda Peñaranda</span>
-                                <span>Peter A. Pasuy Quevedo</span>
+                                <span>José D. Valda&dash;Peñaranda</span>
+                                <span>Peter A. Pasuy&dash;Quevedo</span>
                             </div>
                         </div>
                         <h2 class="font-light text-xl text-spectral-blue">Abstract</h2>
                         <p class="text-md font-light text-justify">
-                            Thermal hotspots in photovoltaic modules are a leading cause of performance loss,
-                            accelerated degradation, and safety concerns, making timely and scalable detection essential
-                            for modern solar farm operations. This article presents a hybrid approach that combines
-                            classical computer vision with deep learning to analyze radiometric thermal imagery,
-                            demonstrating that complementary methods can be orchestrated to balance interpretability,
-                            robustness, and speed. The proposed workflow emphasizes rapid prototyping and modularity,
-                            enabling practitioners to assemble a practical end-to-end pipeline—from data capture and
-                            preprocessing through candidate generation, classification, and reporting—using readily
-                            available tools and modest datasets. Designed for integration with existing monitoring
-                            systems, the workflow outputs per-module alerts, normalized severity indicators, and
-                            artifacts suitable for operations and maintenance decision-making at scale. Empirical
-                            results show that the combined strategy improves detection reliability over single-family
-                            methods while preserving transparency in how anomalies are identified, supporting both quick
-                            pilots and production-ready deployments across handheld, drone, and fixed installations.
+                            Thermal hotspots in photovoltaic modules are a leading cause of performance loss, accelerated
+                            degradation, and safety concerns, making timely and scalable detection essential for modern solar
+                            farm operations. This article presents a hybrid approach that combines classical computer vision
+                            with deep learning to analyze radiometric thermal imagery, demonstrating that complementary methods
+                            can be orchestrated to balance interpretability, robustness, and speed. The proposed workflow
+                            emphasizes rapid prototyping and modularity, enabling practitioners to assemble a practical
+                            end-to-end pipeline—from data capture and preprocessing through candidate generation,
+                            classification, and reporting—using readily available tools and modest datasets. Designed for
+                            integration with existing monitoring systems, the workflow outputs per-module alerts, normalized
+                            severity indicators, and artifacts suitable for operations and maintenance decision-making at
+                            scale. Empirical results show that the combined strategy improves detection reliability over
+                            single-family methods while preserving transparency in how anomalies are identified, supporting
+                            both quick pilots and production-ready deployments across handheld, drone, and fixed installations.
                         </p>
+                        <h2 class="font-light text-xl text-spectral-blue">Preliminary Results</h2>
+                        <p class="text-md font-light text-justify">
+                            These results were obtained by training a YOLO11n model using the Ultralytics library, which
+                            provides an out-of-the-box interface for rapid iteration and training across multiple model
+                            architectures. The model was evaluated on an AI-generated video created with Google Veo 3, due to
+                            the lack of publicly available datasets containing infrared cinematography of solar panels. Initial
+                            observations indicate that the model performs reasonably well, detecting most hotspots in the video
+                            while missing several others. This is likely attributable to the compact size of the trained model
+                            and a potential domain mismatch, as the training data may originate from solar panel imagery with
+                            different characteristics.
+                        </p>
+                        <video controls class="w-full">
+                            <source src={hotspotDetectionVideo} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        <h2 class="font-light text-xl text-spectral-blue">Next Steps</h2>
+                        <ol class="text-md font-light list-decimal list-inside">
+                            <li>Train additional architectures including YOLO10, YOLO11m, and RT-DETR.</li>
+                            <li>Conduct comprehensive evaluations using standard metrics: mAP, F1, Accuracy, Precision,
+                                Recall, and IoU.</li>
+                            <li>Develop an interactive Gradio application for comparative testing of model weights and
+                                architectures.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+    <footer class="mx-12 my-8 border-t-[0.5px] pt-4 pb-4">
+        <div class="flex justify-center font-extralight text-sm">
+            <span>Copyright &copy; {new Date().getFullYear()}</span>
+        </div>
+    </footer>
 </Layout>
