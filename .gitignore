@@ -1,9 +1,18 @@
-.vscode/
-.zed/
-node_modules/
+# macOS
+.DS_Store
+
+# Build
 dist/
 build/
-target/
+
+# VScode
+.vscode/
+
+# Zed
+.zed/
+
+# Node
+node_modules/
 
 # pixi environments
 .pixi/*
