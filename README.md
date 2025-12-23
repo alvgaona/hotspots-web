@@ -1,7 +1,5 @@
 # Hotspots Website
 
-[![Huggingface](https://huggingface.co/datasets/huggingface/badges/resolve/main/sign-in-with-huggingface-sm.svg)](<https://huggingface.co/spaces/alvgaona/solar-panel-hotspot-detection/tree/main>)
-
 [https://upm-vxc.netlify.app](<https://upm-vxc.netlify.app>)
 
 ## Stack
@@ -12,4 +10,3 @@
 ## License
 
 [MIT License](LICENSE)
-
