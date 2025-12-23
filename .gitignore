@@ -4,3 +4,7 @@ node_modules/
 dist/
 build/
 target/
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
