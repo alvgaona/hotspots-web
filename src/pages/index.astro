@@ -2,93 +2,1496 @@
 import { Image } from "astro:assets";
 import solarPanelLogo from "../assets/solar-panel-logo.png";
 import hotspotDetectionVideo from "../assets/hotspot-detection.mp4";
+import perspectiveTransform from "../assets/applied-perspective-transform.jpeg";
+import orcidIcon from "../assets/orcid.svg?raw";
+import authorAvatar from "../assets/avatar.jpg";
 import Layout from "../layouts/Layout.astro";
-import "@fontsource-variable/lexend";
+
+const bibtex = `@misc{valda2026thermal,
+  title        = {Thermal Hotspots Detection in Photovoltaic Modules},
+  author       = {Valda-Pe{\\~n}aranda, Jos{\\'e} D. and
+                  Gaona, Alvaro J. and
+                  G{\\'o}mez-Velayos, Lucas and
+                  Pasuy-Quevedo, Peter and
+                  Alvarez-Monteagudo, Pedro},
+  year         = {2026},
+  month        = {January},
+  howpublished = {Course project, Visi{\\'o}n por Computador, Universidad Polit{\\'e}cnica de Madrid},
+  note         = {Available at: \\url{https://github.com/alvgaona/vxc}}
+}`;
 ---
 
 <Layout>
-    <nav class="mx-12 my-4">
-        <header class="flex justify-end gap-8 uppercase font-light">
-            <a href="/team">Team</a>
-            <a href="https://github.com/alvgaona/vxc">GitHub</a>
+    <nav class="mx-4 md:mx-12 my-4 py-2">
+        <header class="flex justify-end items-center">
+            <a href="https://github.com/alvgaona/hotspots-web" target="_blank" rel="noopener noreferrer" class="hover:text-spectral-blue transition-colors">
+                <i class="ph ph-github-logo text-lg"></i>
+            </a>
         </header>
     </nav>
-    <div class="flex flex-col items-center my-12">
-        <div class="flex flex-col items-center gap-2 mx-32 px-12">
+
+    <div class="flex flex-col items-center my-8 md:my-12">
+        <div class="flex flex-col items-center gap-2 mx-4 md:mx-16 lg:mx-32 px-4 md:px-12">
             <div class="flex flex-col gap-4">
                 <Image class="self-center" src={solarPanelLogo} alt="A solar panel" height="100" />
-                <h1 class="font-light text-4xl text-center">Thermal Hotspots Detection in Photovoltaic Modules</h1>
+                <h1 class="font-light text-2xl md:text-4xl text-center">Thermal Hotspots Detection in Photovoltaic Modules</h1>
             </div>
-            <h2 class="font-extralight text-sm">
-                A computer vision project at Universidad Politécnica de Madrid
-            </h2>
         </div>
-        <main class="mx-64 px-24">
-            <div class="flex flex-col gap-6 mt-6">
+
+        <main class="mx-4 md:mx-16 lg:mx-32 xl:mx-64 px-4 md:px-12 lg:px-24 max-w-6xl">
+            <div class="flex flex-col gap-8 mt-6">
                 <div>
-                    <div class="flex justify-between font-extralight pb-2">
+                    <div class="flex justify-between font-light pb-2 text-sm">
                         <span>Computer Vision</span>
-                        <span>January 1, 2026</span>
+                        <span>January 23, 2026</span>
                     </div>
-                    <div class="flex flex-col gap-4 border-t-[0.5px] pt-4">
-                        <div class="flex flex-col self-center font-extralight text-sm justify-center items-center">
-                            <div class="flex gap-4">
-                                <span>Alvaro J. Gaona</span>
-                                <span>Lucas Gomez&dash;Velayos</span>
-                                <span>Pedro Alvarez&dash;Monteagudo</span>
+                    <div class="flex flex-col gap-3 border-t-[0.5px] pt-4 items-center">
+                        <div class="flex justify-center avatar-stack">
+                            <a href="https://github.com/VidValda" target="_blank" rel="noopener noreferrer" data-tooltip="José D. Valda-Peñaranda" class="avatar-link -mr-4 transition-transform duration-200">
+                                <div class="w-10 h-10 rounded-full border-2 border-[#f2f0ea] bg-[#d4d2cc] flex items-center justify-center cursor-pointer">
+                                    <i class="ph ph-user text-gray-500"></i>
+                                </div>
+                            </a>
+                            <a href="https://github.com/alvgaona" target="_blank" rel="noopener noreferrer" data-tooltip="Alvaro J. Gaona" class="avatar-link -mr-4 transition-transform duration-200">
+                                <Image src={authorAvatar} alt="Alvaro J. Gaona" class="w-10 h-10 rounded-full border-2 border-[#f2f0ea] object-cover cursor-pointer" />
+                            </a>
+                            <a href="https://github.com/Pigamer37" target="_blank" rel="noopener noreferrer" data-tooltip="Lucas Gómez-Velayos" class="avatar-link -mr-4 transition-transform duration-200">
+                                <div class="w-10 h-10 rounded-full border-2 border-[#f2f0ea] bg-[#d4d2cc] flex items-center justify-center cursor-pointer">
+                                    <i class="ph ph-user text-gray-500"></i>
+                                </div>
+                            </a>
+                            <a href="https://github.com/peter2395" target="_blank" rel="noopener noreferrer" data-tooltip="Peter Pasuy-Quevedo" class="avatar-link -mr-4 transition-transform duration-200">
+                                <div class="w-10 h-10 rounded-full border-2 border-[#f2f0ea] bg-[#d4d2cc] flex items-center justify-center cursor-pointer">
+                                    <i class="ph ph-user text-gray-500"></i>
+                                </div>
+                            </a>
+                            <a href="https://github.com/pedro-alvarez-monteagudo" target="_blank" rel="noopener noreferrer" data-tooltip="Pedro Alvarez-Monteagudo" class="avatar-link transition-transform duration-200">
+                                <div class="w-10 h-10 rounded-full border-2 border-[#f2f0ea] bg-[#d4d2cc] flex items-center justify-center cursor-pointer">
+                                    <i class="ph ph-user text-gray-500"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="flex flex-col items-center font-light text-base gap-y-1">
+                            <div class="flex justify-center items-center gap-x-1">
+                                <span class="flex items-center gap-1">
+                                    Jos&eacute; D. Valda&dash;Pe&ntilde;aranda
+                                    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" aria-label="ORCID" class="hover:opacity-70 transition-opacity"><Fragment set:html={orcidIcon} /></a>
+                                </span>
+                                <span class="text-gray-400">&bull;</span>
+                                <span class="flex items-center gap-1">
+                                    Alvaro J. Gaona
+                                    <a href="https://orcid.org/0009-0003-4967-4444" target="_blank" rel="noopener noreferrer" aria-label="ORCID" class="hover:opacity-70 transition-opacity"><Fragment set:html={orcidIcon} /></a>
+                                </span>
+                                <span class="text-gray-400">&bull;</span>
+                                <span class="flex items-center gap-1">
+                                    Lucas G&oacute;mez&dash;Velayos
+                                    <a href="https://orcid.org/0009-0005-3829-8361" target="_blank" rel="noopener noreferrer" aria-label="ORCID" class="hover:opacity-70 transition-opacity"><Fragment set:html={orcidIcon} /></a>
+                                </span>
                             </div>
-                            <div class="flex gap-4">
-                                <span>José D. Valda&dash;Peñaranda</span>
-                                <span>Peter A. Pasuy&dash;Quevedo</span>
+                            <div class="flex justify-center items-center gap-x-1">
+                                <span class="flex items-center gap-1">
+                                    Peter Pasuy&dash;Quevedo
+                                    <a href="https://orcid.org/0009-0003-8768-0685" target="_blank" rel="noopener noreferrer" aria-label="ORCID" class="hover:opacity-70 transition-opacity"><Fragment set:html={orcidIcon} /></a>
+                                </span>
+                                <span class="text-gray-400">&bull;</span>
+                                <span class="flex items-center gap-1">
+                                    Pedro Alvarez&dash;Monteagudo
+                                    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener noreferrer" aria-label="ORCID" class="hover:opacity-70 transition-opacity"><Fragment set:html={orcidIcon} /></a>
+                                </span>
                             </div>
                         </div>
-                        <h2 class="font-light text-xl text-spectral-blue">Abstract</h2>
-                        <p class="text-md font-light text-justify">
-                            Thermal hotspots in photovoltaic modules are a leading cause of performance loss, accelerated
-                            degradation, and safety concerns, making timely and scalable detection essential for modern solar
-                            farm operations. This article presents a hybrid approach that combines classical computer vision
-                            with deep learning to analyze radiometric thermal imagery, demonstrating that complementary methods
-                            can be orchestrated to balance interpretability, robustness, and speed. The proposed workflow
-                            emphasizes rapid prototyping and modularity, enabling practitioners to assemble a practical
-                            end-to-end pipeline—from data capture and preprocessing through candidate generation,
-                            classification, and reporting—using readily available tools and modest datasets. Designed for
-                            integration with existing monitoring systems, the workflow outputs per-module alerts, normalized
-                            severity indicators, and artifacts suitable for operations and maintenance decision-making at
-                            scale. Empirical results show that the combined strategy improves detection reliability over
-                            single-family methods while preserving transparency in how anomalies are identified, supporting
-                            both quick pilots and production-ready deployments across handheld, drone, and fixed installations.
-                        </p>
-                        <h2 class="font-light text-xl text-spectral-blue">Preliminary Results</h2>
-                        <p class="text-md font-light text-justify">
-                            These results were obtained by training a YOLO11n model using the Ultralytics library, which
-                            provides an out-of-the-box interface for rapid iteration and training across multiple model
-                            architectures. The model was evaluated on an AI-generated video created with Google Veo 3, due to
-                            the lack of publicly available datasets containing infrared cinematography of solar panels. Initial
-                            observations indicate that the model performs reasonably well, detecting most hotspots in the video
-                            while missing several others. This is likely attributable to the compact size of the trained model
-                            and a potential domain mismatch, as the training data may originate from solar panel imagery with
-                            different characteristics.
-                        </p>
-                        <video controls class="w-full">
-                            <source src={hotspotDetectionVideo} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                        <h2 class="font-light text-xl text-spectral-blue">Next Steps</h2>
-                        <ol class="text-md font-light list-decimal list-inside">
-                            <li>Train additional architectures including YOLO10, YOLO11m, and RT-DETR.</li>
-                            <li>Conduct comprehensive evaluations using standard metrics: mAP, F1, Accuracy, Precision,
-                                Recall, and IoU.</li>
-                            <li>Develop an interactive Gradio application for comparative testing of model weights and
-                                architectures.</li>
-                        </ol>
+
+                        <!-- Abstract -->
+                        <section id="abstract">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Abstract</h2>
+                            <p class="text-md font-light text-justify">
+                                Thermal hotspots in photovoltaic modules are a leading cause of performance loss, accelerated
+                                degradation, and safety concerns, making timely and scalable detection essential for modern solar
+                                farm operations. This article presents a hybrid approach that combines classical computer vision
+                                with deep learning to analyze radiometric thermal imagery, demonstrating that complementary methods
+                                can be orchestrated to balance interpretability, robustness, and speed. The proposed workflow
+                                emphasizes rapid prototyping and modularity, enabling practitioners to assemble a practical
+                                end-to-end pipeline&mdash;from data capture and preprocessing through candidate generation,
+                                classification, and reporting&mdash;using readily available tools and modest datasets.
+                            </p>
+                        </section>
+
+                        <!-- The Problem -->
+                        <section id="problem" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">The Problem</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    Thermal hotspots in photovoltaic (PV) modules occur when individual cells or connections
+                                    exhibit abnormally high temperatures due to defects, shading, or degradation. These localized
+                                    overheating events cause <strong>energy to dissipate as heat rather than electricity</strong>,
+                                    reducing module efficiency and accelerating material degradation.
+                                </p>
+                                <p class="text-justify">
+                                    A single hotspot can reduce a panel's output by 10&ndash;20%, and prolonged exposure may lead
+                                    to permanent cell damage or, in severe cases, fire hazards. As utility-scale solar installations
+                                    grow to encompass <strong>thousands of modules</strong>, manual inspection with handheld thermal
+                                    cameras becomes impractical&mdash;both in terms of time and cost.
+                                </p>
+                                <div class="bg-[#f5f3ed] p-4 rounded-lg shadow-sm">
+                                    <p class="font-medium mb-2 flex items-center gap-3">
+                                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-spectral-blue/15">
+                                            <i class="ph ph-lightbulb text-spectral-blue"></i>
+                                        </span>
+                                        Automated Inspection
+                                    </p>
+                                    <p>
+                                        Unmanned aerial vehicles (UAVs) equipped with thermal cameras can survey large installations
+                                        rapidly, while <strong>computer vision algorithms</strong> enable real-time detection and
+                                        localization of thermal anomalies&mdash;providing a scalable solution for predictive maintenance.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Key Takeaways -->
+                        <section id="takeaways" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Key Takeaways</h2>
+                            <div class="bg-[#e8e6e0] p-4 md:p-6 rounded-lg border border-[#d4d2cc]">
+                                <ul class="space-y-3 text-md font-light">
+                                    <li class="flex items-start gap-3">
+                                        <i class="ph ph-check-circle text-emerald-600 text-lg mt-0.5"></i>
+                                        <span><strong>YOLO11 outperforms RT-DETR</strong> for thermal hotspot detection&mdash;CNN-based approaches handle localized features better than transformers for this task</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i class="ph ph-check-circle text-emerald-600 text-lg mt-0.5"></i>
+                                        <span><strong>Edge-ready models work</strong>&mdash;YOLO11-N runs at 6+ FPS on CPU with less than 10MB storage, perfect for drone deployment</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i class="ph ph-check-circle text-emerald-600 text-lg mt-0.5"></i>
+                                        <span><strong>Data augmentation matters</strong>&mdash;perspective transforms expanded our dataset from 934 to 3,472 images</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i class="ph ph-check-circle text-emerald-600 text-lg mt-0.5"></i>
+                                        <span><strong>Smaller models are viable</strong>&mdash;performance gap between model sizes is small, so deployment constraints can drive model selection</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- How It Works -->
+                        <section id="how-it-works" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">How It Works</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    Our research pipeline consists of two phases: training and inference evaluation.
+                                </p>
+
+                                <!-- Training Pipeline -->
+                                <div class="my-6">
+                                    <h3 class="font-medium text-sm mb-3 text-gray-700">Training Pipeline</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-database text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">1. Dataset</h3>
+                                            <p class="text-xs text-gray-600 mt-1">Public thermal dataset with hotspot labels</p>
+                                        </div>
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-arrows-out text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">2. Augment</h3>
+                                            <p class="text-xs text-gray-600 mt-1">Random perspective transformations</p>
+                                        </div>
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-brain text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">3. Train</h3>
+                                            <p class="text-xs text-gray-600 mt-1">YOLO11 &amp; RT-DETR models</p>
+                                        </div>
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-chart-bar text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">4. Evaluate</h3>
+                                            <p class="text-xs text-gray-600 mt-1">mAP, precision, recall metrics</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Inference Pipeline -->
+                                <div class="my-6">
+                                    <h3 class="font-medium text-sm mb-3 text-gray-700">Inference Pipeline</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-image text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">1. Test Images</h3>
+                                            <p class="text-xs text-gray-600 mt-1">Held-out thermal images for evaluation</p>
+                                        </div>
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-cpu text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">2. Inference</h3>
+                                            <p class="text-xs text-gray-600 mt-1">Run on CPU or GPU hardware</p>
+                                        </div>
+                                        <div class="bg-[#e8e6e0] border border-[#d4d2cc] rounded-lg p-4 text-center">
+                                            <i class="ph ph-timer text-3xl text-gray-700 mb-2"></i>
+                                            <h3 class="font-medium text-sm">3. Benchmark</h3>
+                                            <p class="text-xs text-gray-600 mt-1">Measure timings &amp; resource usage</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Data Augmentation -->
+                                <div class="bg-[#f5f3ed] p-4 rounded-lg shadow-sm">
+                                    <h3 class="font-medium mb-2 flex items-center gap-3">
+                                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-violet-600/15">
+                                            <i class="ph ph-arrows-out text-violet-600"></i>
+                                        </span>
+                                        Data Augmentation: Perspective Transforms
+                                    </h3>
+                                    <p class="text-justify text-sm">
+                                        Since drone cameras capture panels from varying angles and altitudes, we simulate these
+                                        conditions using <strong>homography-based perspective transformations</strong>. This technique warps
+                                        images as if viewed from different positions while correctly transforming the bounding box
+                                        labels&mdash;expanding our training dataset nearly 4x without collecting new images.
+                                    </p>
+                                </div>
+
+                                <!-- Perspective Transform Example -->
+                                <figure class="w-full my-4">
+                                    <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                        <Image
+                                            src={perspectiveTransform}
+                                            alt="Three different perspectives of the same thermal image with bounding box labels"
+                                            class="w-full rounded-lg"
+                                        />
+                                    </div>
+                                    <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                        Three perspectives of the same image generated through homography transforms, with labels shown as bright rectangles.
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </section>
+
+                        <!-- The Models -->
+                        <section id="models" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">The Models</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    We evaluated two fundamentally different approaches to object detection: a fast CNN-based detector
+                                    and a transformer-based architecture with global attention.
+                                </p>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- YOLO11 -->
+                                    <div class="border border-[#d4d2cc] rounded-lg p-4 bg-[#e8e6e0] shadow-sm">
+                                        <h3 class="font-medium text-lg mb-2 text-spectral-blue">YOLO11</h3>
+                                        <p class="text-sm text-gray-700 mb-3">
+                                            "You Only Look Once"&mdash;processes the entire image in a single pass through the network.
+                                        </p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>&#8226; <strong>Architecture:</strong> CNN-based (Backbone &rarr; Neck &rarr; Head)</li>
+                                            <li>&#8226; <strong>Strength:</strong> Speed and efficiency</li>
+                                            <li>&#8226; <strong>Key feature:</strong> Anchor-free detection</li>
+                                            <li>&#8226; <strong>Variants tested:</strong> Nano, Small, Medium, Large, X-Large</li>
+                                        </ul>
+                                        <div class="mt-3 text-xs bg-[#f2f0ea] rounded p-2 border border-[#d4d2cc]">
+                                            <strong>Best for:</strong> Edge deployment, real-time processing, resource-constrained devices
+                                        </div>
+                                    </div>
+
+                                    <!-- RT-DETR -->
+                                    <div class="border border-[#d4d2cc] rounded-lg p-4 bg-[#e8e6e0] shadow-sm">
+                                        <h3 class="font-medium text-lg mb-2 text-amber-600">RT-DETR</h3>
+                                        <p class="text-sm text-gray-700 mb-3">
+                                            Real-Time Detection Transformer&mdash;uses attention mechanisms to understand global context.
+                                        </p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>&#8226; <strong>Architecture:</strong> Hybrid encoder + transformer decoder</li>
+                                            <li>&#8226; <strong>Strength:</strong> Global context understanding</li>
+                                            <li>&#8226; <strong>Key feature:</strong> NMS-free (no post-processing)</li>
+                                            <li>&#8226; <strong>Variants tested:</strong> Large, X-Large</li>
+                                        </ul>
+                                        <div class="mt-3 text-xs bg-[#f2f0ea] rounded p-2 border border-[#d4d2cc]">
+                                            <strong>Best for:</strong> Complex scenes, when context matters, GPU-equipped systems
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="text-sm text-gray-600 italic">
+                                    Why test both? Hotspots are simple, localized features (bright spots on panels), but they require
+                                    context to distinguish from reflections or normal variations. We wanted to see if transformers'
+                                    global attention would help&mdash;spoiler: for this task, CNNs win.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Training -->
+                        <section id="training" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Training</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    All models were trained for 100 epochs on the augmented dataset using an NVIDIA RTX 3090 GPU.
+                                    Training time varied significantly between architectures, with YOLO11 variants generally
+                                    training faster than their RT-DETR counterparts.
+                                </p>
+
+                                <!-- Training Time Charts -->
+                                <figure class="w-full">
+                                    <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                        <h4 class="text-center font-medium mb-4">Training Time Analysis</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="aspect-[4/3]">
+                                                <canvas id="chart-total-training-time"></canvas>
+                                            </div>
+                                            <div class="aspect-[4/3]">
+                                                <canvas id="chart-time-per-epoch"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                        Training time comparison across all models (100 epochs).
+                                    </figcaption>
+                                </figure>
+
+                                <div class="bg-[#f5f3ed] p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-medium mb-2 flex items-center gap-3">
+                                        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-amber-600/15">
+                                            <i class="ph ph-lightbulb text-amber-600"></i>
+                                        </span>
+                                        Training Insights
+                                    </h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>&#8226; <strong>YOLO11-N trains in just 1.4 hours</strong>&mdash;ideal for rapid prototyping and iteration</li>
+                                        <li>&#8226; <strong>RT-DETR-X requires 10.8 hours</strong>&mdash;the transformer architecture demands significantly more compute</li>
+                                        <li>&#8226; <strong>Time per epoch scales with model size</strong>&mdash;from 0.6 min (YOLO11-N) to 5.3 min (RT-DETR-X)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Results -->
+                        <section id="results" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Results</h2>
+                            <div class="text-md font-light space-y-6">
+
+                                <!-- Performance Summary -->
+                                <div class="space-y-6">
+                                    <h3 class="font-medium mb-3">Performance Comparison</h3>
+                                    <p class="text-justify mb-4">
+                                        YOLO11 consistently outperformed RT-DETR across all metrics. The best overall model was
+                                        <strong>YOLO11-M</strong>, while <strong>YOLO11-N</strong> offers the best efficiency for edge deployment.
+                                    </p>
+
+                                    <!-- Results Table -->
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-sm border-collapse">
+                                            <thead>
+                                                <tr class="bg-[#e8e6e0]">
+                                                    <th class="border p-2 text-left">Model</th>
+                                                    <th class="border p-2 text-center">mAP50</th>
+                                                    <th class="border p-2 text-center">mAP50-95</th>
+                                                    <th class="border p-2 text-center">Precision</th>
+                                                    <th class="border p-2 text-center">Recall</th>
+                                                    <th class="border p-2 text-center">Size</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-[#e8e6e0]">
+                                                    <td class="border p-2 font-medium border-l-4 border-l-emerald-600">YOLO11-M</td>
+                                                    <td class="border p-2 text-center">66.2%</td>
+                                                    <td class="border p-2 text-center">30.7%</td>
+                                                    <td class="border p-2 text-center">65.8%</td>
+                                                    <td class="border p-2 text-center">70.1%</td>
+                                                    <td class="border p-2 text-center">~40 MB</td>
+                                                </tr>
+                                                <tr class="bg-[#e8e6e0]">
+                                                    <td class="border p-2 font-medium border-l-4 border-l-spectral-blue">YOLO11-N</td>
+                                                    <td class="border p-2 text-center">53.7%</td>
+                                                    <td class="border p-2 text-center">28.0%</td>
+                                                    <td class="border p-2 text-center">49.1%</td>
+                                                    <td class="border p-2 text-center">67.1%</td>
+                                                    <td class="border p-2 text-center">&lt;10 MB</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border p-2">YOLO11-S</td>
+                                                    <td class="border p-2 text-center">62.5%</td>
+                                                    <td class="border p-2 text-center">29.3%</td>
+                                                    <td class="border p-2 text-center">63.8%</td>
+                                                    <td class="border p-2 text-center">71.5%</td>
+                                                    <td class="border p-2 text-center">~20 MB</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border p-2">RT-DETR-L</td>
+                                                    <td class="border p-2 text-center">51.2%</td>
+                                                    <td class="border p-2 text-center">23.0%</td>
+                                                    <td class="border p-2 text-center">49.1%</td>
+                                                    <td class="border p-2 text-center">71.5%</td>
+                                                    <td class="border p-2 text-center">~65 MB</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border p-2">RT-DETR-X</td>
+                                                    <td class="border p-2 text-center">48.9%</td>
+                                                    <td class="border p-2 text-center">21.8%</td>
+                                                    <td class="border p-2 text-center">53.7%</td>
+                                                    <td class="border p-2 text-center">67.7%</td>
+                                                    <td class="border p-2 text-center">~120 MB</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <span class="inline-block w-3 h-3 bg-emerald-600 rounded-sm mr-1"></span>Best accuracy
+                                        <span class="inline-block w-3 h-3 bg-spectral-blue rounded-sm mr-1 ml-3"></span>Best for edge deployment
+                                    </p>
+
+                                    <p class="text-justify">
+                                        The charts below break down these metrics visually. <strong>mAP50-95</strong> (mean Average
+                                        Precision averaged across IoU thresholds from 0.50 to 0.95) provides the strictest measure
+                                        of localization accuracy, while <strong>mAP50</strong> evaluates detection at a more lenient
+                                        threshold. Together with <strong>Precision</strong> (how many detections are correct) and
+                                        <strong>Recall</strong> (how many hotspots are found), these metrics reveal that YOLO11
+                                        variants consistently outperform RT-DETR.
+                                    </p>
+
+                                    <!-- Interactive Performance Charts (2x2 Grid) -->
+                                    <figure class="w-full">
+                                        <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                            <h4 class="text-center font-medium mb-4">Model Performance: RT-DETR vs YOLO11</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-map50-95"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-map50"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-precision"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-recall"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                            Performance metrics across all evaluated models (interactive).
+                                        </figcaption>
+                                    </figure>
+
+                                    <p class="text-justify">
+                                        The scatter plot visualizes the precision/recall trade-off. <strong>Precision</strong> measures
+                                        how many detected hotspots are actually real (avoiding false alarms), while <strong>Recall</strong>
+                                        measures how many actual hotspots are found (avoiding missed detections). Models in the
+                                        <strong>upper-right quadrant</strong> achieve the best balance. YOLO11-S and YOLO11-M cluster
+                                        in this optimal region, while RT-DETR variants show lower precision despite comparable recall.
+                                    </p>
+
+                                    <!-- Precision vs Recall (Interactive) -->
+                                    <figure class="w-full">
+                                        <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                            <canvas id="chart-precision-recall" class="w-full" style="height: 400px;"></canvas>
+                                        </div>
+                                        <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                            Precision vs Recall trade-off. Models in the upper-right quadrant achieve the best balance.
+                                        </figcaption>
+                                    </figure>
+
+                                    <p class="text-justify">
+                                        The grouped bar chart provides a comprehensive side-by-side comparison. A key finding is that
+                                        the performance gap between YOLO11 variants is relatively small, suggesting that deployment
+                                        considerations&mdash;such as inference speed and storage footprint&mdash;may be more important
+                                        than raw accuracy differences when selecting a model.
+                                    </p>
+
+                                    <!-- Comprehensive Comparison (Interactive) -->
+                                    <figure class="w-full">
+                                        <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                            <canvas id="chart-comprehensive" class="w-full" style="height: 400px;"></canvas>
+                                        </div>
+                                        <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                            Comprehensive view of all metrics simultaneously for each model.
+                                        </figcaption>
+                                    </figure>
+
+                                    <div class="bg-[#f5f3ed] p-4 rounded-lg shadow-sm">
+                                        <h4 class="font-medium mb-2 flex items-center gap-3">
+                                            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-spectral-blue/15">
+                                                <i class="ph ph-info text-spectral-blue"></i>
+                                            </span>
+                                            Detection Performance Summary
+                                        </h4>
+                                        <ul class="text-sm space-y-1">
+                                            <li>&#8226; <strong>YOLO11 outperforms RT-DETR</strong> for thermal hotspot detection across all metrics</li>
+                                            <li>&#8226; <strong>YOLO11-M achieves the best accuracy</strong> with 66.2% mAP50 and 30.7% mAP50-95</li>
+                                            <li>&#8226; <strong>RT-DETR&apos;s transformer architecture</strong> does not provide advantages for this task&apos;s simple, localized features</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Speed & Efficiency -->
+                                <div class="space-y-6">
+                                    <h3 class="font-medium mb-3">Speed &amp; Efficiency</h3>
+                                    <p class="text-justify">
+                                        The transition from CPU to GPU inference yields significant performance gains across all models.
+                                        The GPU speedup factor ranges from approximately <strong>10&times;</strong> for the lightweight
+                                        YOLO11-N to over <strong>45&times;</strong> for larger models like YOLO11-X. While RT-DETR and
+                                        YOLO11-X achieve high accuracy, their mean inference time on CPU exceeds 2,500 ms, making them
+                                        unsuitable for real-time video processing without a dedicated GPU.
+                                    </p>
+
+                                    <!-- CPU vs GPU Inference (Interactive 2x2 Grid) -->
+                                    <figure class="w-full">
+                                        <div class="border border-gray-300 rounded-lg p-4 bg-[#f2f0ea]">
+                                            <h4 class="text-center font-medium mb-4">Inference Performance: CPU vs GPU</h4>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-inference-time"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3]">
+                                                    <canvas id="chart-fps"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3] md:aspect-auto md:h-[250px]">
+                                                    <canvas id="chart-speedup"></canvas>
+                                                </div>
+                                                <div class="aspect-[4/3] md:aspect-auto md:h-[250px]">
+                                                    <canvas id="chart-model-size"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <figcaption class="text-xs text-gray-500 mt-2 text-center">
+                                            Inference performance and memory footprint comparison (interactive).
+                                        </figcaption>
+                                    </figure>
+
+                                    <p class="text-justify">
+                                        Conversely, <strong>YOLO11-N maintains a frame rate above 5 FPS on CPU</strong>, providing a
+                                        viable path for deployment on low-power devices lacking hardware acceleration.
+                                    </p>
+
+                                    <div class="bg-[#f5f3ed] p-4 rounded-lg shadow-sm">
+                                        <h4 class="font-medium mb-2 flex items-center gap-3">
+                                            <span class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600/15">
+                                                <i class="ph ph-info text-emerald-600"></i>
+                                            </span>
+                                            Efficiency Summary
+                                        </h4>
+                                        <ul class="text-sm space-y-1">
+                                            <li>&#8226; <strong>YOLO11-N is optimal for edge deployment</strong> with &lt;10 MB storage and &gt;5 FPS on CPU</li>
+                                            <li>&#8226; <strong>GPU acceleration provides 10-45&times; speedup</strong>, making larger models viable for server deployments</li>
+                                            <li>&#8226; <strong>RT-DETR models are slower on CPU</strong> (1,400&ndash;2,700ms), making GPU acceleration essential for real-time use</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Hardware Requirements -->
+                                <div>
+                                    <h3 class="font-medium mb-3">Can I Run This?</h3>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-sm border-collapse">
+                                            <thead>
+                                                <tr class="bg-[#e8e6e0]">
+                                                    <th class="border p-2 text-left">Deployment Scenario</th>
+                                                    <th class="border p-2 text-left">Recommended Model</th>
+                                                    <th class="border p-2 text-left">Requirements</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border p-2">Drone (edge device)</td>
+                                                    <td class="border p-2">YOLO11-N</td>
+                                                    <td class="border p-2">CPU only, &lt;1GB RAM, &lt;10MB storage</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border p-2">Laptop/workstation</td>
+                                                    <td class="border p-2">YOLO11-S or YOLO11-M</td>
+                                                    <td class="border p-2">Any modern CPU, or GPU for real-time</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border p-2">Server/cloud</td>
+                                                    <td class="border p-2">YOLO11-M or YOLO11-L</td>
+                                                    <td class="border p-2">GPU recommended, ~0.3GB VRAM</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+
+                        <!-- Live Demo -->
+                        <section id="demo" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Live Demo</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    Watch an instance of our trained models in action. This video shows yolo11n variant processing
+                                    the same thermal footage of a solar farm, with detected hotspots highlighted in real-time.
+                                </p>
+
+                                <video controls class="w-full rounded-lg shadow-lg">
+                                    <source src={hotspotDetectionVideo} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+
+                                <div class="bg-[#e8e6e0] p-4 rounded-lg">
+                                    <h3 class="font-medium text-sm mb-2">Try It Yourself</h3>
+                                    <p class="text-sm text-gray-600 mb-4">
+                                        Upload your own thermal images and see the model detect hotspots in real-time.
+                                    </p>
+                                    <iframe
+                                        src="https://alvgaona-solar-panel-hotspot-detection.hf.space"
+                                        frameborder="0"
+                                        class="w-full rounded-lg border border-[#d4d2cc]"
+                                        style="height: 600px;"
+                                    ></iframe>
+                                    <p class="text-xs text-gray-500 mt-2">
+                                        <a href="https://huggingface.co/spaces/alvgaona/solar-panel-hotspot-detection/tree/main" target="_blank" rel="noopener noreferrer" class="hover:text-spectral-blue transition-colors">View source files on Hugging Face</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Resources -->
+                        <section id="resources" class="scroll-mt-20 w-full">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Resources</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
+                                <a href="https://universe.roboflow.com/solarpanelimages/solar-panel-infrared-images" target="_blank" rel="noopener noreferrer"
+                                   class="flex items-center gap-2 p-3 rounded-lg border border-[#d4d2cc] hover:bg-[#e8e6e0] transition-colors">
+                                    <i class="ph ph-database text-lg text-gray-500"></i>
+                                    <div>
+                                        <div class="text-sm font-medium">Base Dataset</div>
+                                        <div class="text-xs text-gray-500">934 images</div>
+                                    </div>
+                                </a>
+                                <a href="https://universe.roboflow.com/alvgaona/solar-panel-hot-spots-o9b4n/dataset/1" target="_blank" rel="noopener noreferrer"
+                                   class="flex items-center gap-2 p-3 rounded-lg border border-[#d4d2cc] hover:bg-[#e8e6e0] transition-colors">
+                                    <i class="ph ph-images text-lg text-gray-500"></i>
+                                    <div>
+                                        <div class="text-sm font-medium">Augmented Dataset</div>
+                                        <div class="text-xs text-gray-500">3,472 images</div>
+                                    </div>
+                                </a>
+                                <a href="https://www.youtube.com/watch?v=kOPnaWT5UWE" target="_blank" rel="noopener noreferrer"
+                                   class="flex items-center gap-2 p-3 rounded-lg border border-[#d4d2cc] hover:bg-[#e8e6e0] transition-colors">
+                                    <i class="ph ph-video text-lg text-gray-500"></i>
+                                    <div>
+                                        <div class="text-sm font-medium">Test Video</div>
+                                        <div class="text-xs text-gray-500">Thermal footage</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- Citation -->
+                        <section id="citation" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Citation</h2>
+                            <div class="text-md font-light space-y-4">
+                                <p class="text-justify">
+                                    If you use this work in your research, please cite our paper:
+                                </p>
+
+                                <div class="relative bg-[#e8e6e0] border border-[#d4d2cc] p-4 rounded-lg overflow-x-auto">
+                                    <button
+                                        id="copy-bibtex"
+                                        class="absolute top-2 right-2 flex items-center gap-1.5 px-3 py-1.5 bg-[#f2f0ea] hover:bg-[#dcdad4] text-gray-600 rounded-md transition-colors text-xs border border-[#d4d2cc]"
+                                    >
+                                        <i class="ph ph-copy text-sm"></i>
+                                        <span id="copy-text">Copy</span>
+                                    </button>
+                                    <pre class="text-sm font-mono whitespace-pre-wrap text-gray-700 pr-16"><code id="bibtex" set:text={bibtex} /></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Acknowledgements -->
+                        <section id="acknowledgements" class="scroll-mt-20">
+                            <h2 class="font-light text-xl text-spectral-blue mb-3">Acknowledgements</h2>
+                            <p class="text-md font-light text-justify">
+                                We would like to thank <a href="https://www.car.upm-csic.es/ramon-suarez-fernandez/" target="_blank" rel="noopener noreferrer" class="text-spectral-blue hover:underline">Prof. Ram&oacute;n Su&aacute;rez Fern&aacute;ndez</a> and the Universidad
+                                Polit&eacute;cnica de Madrid for their guidance throughout this project.
+                            </p>
+                        </section>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-    <footer class="mx-12 my-8 border-t-[0.5px] pt-4 pb-4">
+
+    <footer class="mx-4 md:mx-12 my-8 border-t-[0.5px] pt-4 pb-4">
         <div class="flex justify-center font-extralight text-sm">
             <span>Copyright &copy; {new Date().getFullYear()}</span>
         </div>
     </footer>
 </Layout>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    main {
+        counter-reset: figure;
+    }
+
+    figure figcaption::before {
+        counter-increment: figure;
+        content: "Fig. " counter(figure) ": ";
+        font-weight: 500;
+    }
+
+    .avatar-stack a:hover ~ a {
+        transform: translateX(8px);
+    }
+
+    .avatar-link {
+        position: relative;
+    }
+
+    .avatar-link::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(0);
+        padding: 5px 10px;
+        background-color: #333;
+        color: white;
+        font-size: 10px;
+        font-weight: 400;
+        white-space: nowrap;
+        border-radius: 12px 12px 12px 0;
+        opacity: 0;
+        pointer-events: none;
+        margin-bottom: 5px;
+        z-index: 10;
+    }
+
+    .avatar-link::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        border: 3px solid transparent;
+        border-top-color: #333;
+        border-left-color: #333;
+        border-radius: 2px 0 0 0;
+        opacity: 0;
+        pointer-events: none;
+        margin-bottom: 2px;
+        z-index: 10;
+    }
+
+    .avatar-link:hover::before,
+    .avatar-link:hover::after {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    import { Chart, registerables } from 'chart.js';
+    Chart.register(...registerables);
+
+    // Set global font to match website
+    Chart.defaults.font.family = "'IBM Plex Sans Variable', sans-serif";
+
+    const models = ['RT-DETR-X', 'RT-DETR-L', 'YOLO11-N', 'YOLO11-S', 'YOLO11-M', 'YOLO11-L', 'YOLO11-X'];
+
+    // Data from the paper (Figure 6)
+    const data = {
+        'mAP50-95': [0.218, 0.230, 0.280, 0.293, 0.307, 0.281, 0.307],
+        'mAP50': [0.489, 0.512, 0.537, 0.625, 0.662, 0.625, 0.641],
+        'Precision': [0.537, 0.491, 0.491, 0.638, 0.658, 0.617, 0.617],
+        'Recall': [0.677, 0.715, 0.671, 0.715, 0.701, 0.710, 0.711]
+    };
+
+    // Unique color per model (consistent across all charts)
+    const modelColors = [
+        { bg: 'rgba(255, 99, 132, 0.8)', border: 'rgba(255, 99, 132, 1)' },   // RT-DETR-X - Red
+        { bg: 'rgba(255, 159, 64, 0.8)', border: 'rgba(255, 159, 64, 1)' },   // RT-DETR-L - Orange
+        { bg: 'rgba(255, 205, 86, 0.8)', border: 'rgba(255, 205, 86, 1)' },   // YOLO11-N - Yellow
+        { bg: 'rgba(75, 192, 192, 0.8)', border: 'rgba(75, 192, 192, 1)' },   // YOLO11-S - Teal
+        { bg: 'rgba(54, 162, 235, 0.8)', border: 'rgba(54, 162, 235, 1)' },   // YOLO11-M - Blue
+        { bg: 'rgba(153, 102, 255, 0.8)', border: 'rgba(153, 102, 255, 1)' }, // YOLO11-L - Purple
+        { bg: 'rgba(46, 204, 113, 0.8)', border: 'rgba(46, 204, 113, 1)' },   // YOLO11-X - Green
+    ];
+
+    function getColors(_values: number[]) {
+        return modelColors;
+    }
+
+    function createChart(canvasId: string, title: string, values: number[], yMax: number) {
+        const ctx = document.getElementById(canvasId) as HTMLCanvasElement;
+        if (!ctx) return;
+
+        const colors = getColors(values);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: models,
+                datasets: [{
+                    label: title,
+                    data: values,
+                    backgroundColor: colors.map(c => c.bg),
+                    borderColor: colors.map(c => c.border),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: `(${String.fromCharCode(97 + ['mAP50-95', 'mAP50', 'Precision', 'Recall'].indexOf(title))}) ${title}`,
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${title}: ${(context.raw as number * 100).toFixed(1)}%`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: yMax,
+                        ticks: {
+                            callback: (value) => (Number(value) * 100).toFixed(0) + '%',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 9 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Create all 4 charts
+    createChart('chart-map50-95', 'mAP50-95', data['mAP50-95'], 0.35);
+    createChart('chart-map50', 'mAP50', data['mAP50'], 0.8);
+    createChart('chart-precision', 'Precision', data['Precision'], 0.8);
+    createChart('chart-recall', 'Recall', data['Recall'], 0.8);
+
+    // Training time data (from training-time-analysis)
+    const trainingModels = ['RT-DETR-X', 'RT-DETR-L', 'YOLO11-N', 'YOLO11-S', 'YOLO11-M', 'YOLO11-L', 'YOLO11-X'];
+    const trainingData = {
+        totalHours: [10.8, 5.1, 1.4, 2.1, 5.0, 4.7, 6.1],
+        timePerEpoch: [5.3, 1.4, 0.6, 0.9, 1.5, 1.9, 2.9]
+    };
+
+    // Colors matching the image: RT-DETR (teal), YOLO11 (orange)
+    const trainingColors = trainingModels.map(m =>
+        m.startsWith('RT-DETR')
+            ? { bg: 'rgba(69, 162, 158, 0.8)', border: 'rgba(69, 162, 158, 1)' }
+            : { bg: 'rgba(230, 159, 0, 0.8)', border: 'rgba(230, 159, 0, 1)' }
+    );
+
+    // Total Training Time Chart
+    const totalTimeCtx = document.getElementById('chart-total-training-time') as HTMLCanvasElement;
+    if (totalTimeCtx) {
+        new Chart(totalTimeCtx, {
+            type: 'bar',
+            data: {
+                labels: trainingModels,
+                datasets: [{
+                    label: 'Total Training Time',
+                    data: trainingData.totalHours,
+                    backgroundColor: trainingColors.map(c => c.bg),
+                    borderColor: trainingColors.map(c => c.border),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '(a) Total Training Time',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.raw}h`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Total Training Time (hours)' },
+                        ticks: {
+                            font: { size: 10 },
+                            callback: (value) => value + 'h'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 9 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Time per Epoch Chart
+    const epochTimeCtx = document.getElementById('chart-time-per-epoch') as HTMLCanvasElement;
+    if (epochTimeCtx) {
+        new Chart(epochTimeCtx, {
+            type: 'bar',
+            data: {
+                labels: trainingModels,
+                datasets: [{
+                    label: 'Time per Epoch',
+                    data: trainingData.timePerEpoch,
+                    backgroundColor: trainingColors.map(c => c.bg),
+                    borderColor: trainingColors.map(c => c.border),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '(b) Time per Epoch',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.raw}m`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Time per Epoch (minutes)' },
+                        ticks: {
+                            font: { size: 10 },
+                            callback: (value) => value + 'm'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 9 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Precision vs Recall scatter plot
+    const prCtx = document.getElementById('chart-precision-recall') as HTMLCanvasElement;
+    if (prCtx) {
+        // Data points: { x: recall, y: precision }
+        const scatterData = models.map((model, i) => ({
+            x: data['Recall'][i],
+            y: data['Precision'][i],
+            label: model
+        }));
+
+        // Use same colors as other charts
+        const pointColors = modelColors.map(c => c.border);
+
+        new Chart(prCtx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Models',
+                    data: scatterData,
+                    backgroundColor: pointColors,
+                    borderColor: pointColors,
+                    pointRadius: 8,
+                    pointHoverRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Precision vs Recall: Model Comparison',
+                        font: { size: 14, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                const point = context.raw as { x: number; y: number; label: string };
+                                return [
+                                    point.label,
+                                    `Precision: ${(point.y * 100).toFixed(1)}%`,
+                                    `Recall: ${(point.x * 100).toFixed(1)}%`
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Recall' },
+                        min: 0.4,
+                        max: 1.0,
+                        ticks: {
+                            callback: (value) => (Number(value) * 100).toFixed(0) + '%'
+                        }
+                    },
+                    y: {
+                        title: { display: true, text: 'Precision' },
+                        min: 0.4,
+                        max: 1.0,
+                        ticks: {
+                            callback: (value) => (Number(value) * 100).toFixed(0) + '%'
+                        }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'modelLabels',
+                afterDatasetsDraw: (chart) => {
+                    const ctx = chart.ctx;
+                    ctx.font = "11px 'IBM Plex Sans Variable', sans-serif";
+                    ctx.fillStyle = '#374151';
+
+                    chart.data.datasets[0].data.forEach((point: any, i: number) => {
+                        const meta = chart.getDatasetMeta(0);
+                        const pos = meta.data[i];
+                        ctx.fillText(point.label, pos.x + 10, pos.y - 5);
+                    });
+                }
+            }]
+        });
+    }
+
+    // Inference data from benchmark results
+    const inferenceData = {
+        cpu_ms: [161.4, 371.4, 941.3, 1118.9, 2525.1, 1415.2, 2716.3],  // CPU inference time in ms
+        gpu_ms: [15.5, 23.3, 36.6, 44.6, 55.3, 63.7, 79.2],             // GPU inference time in ms
+        cpu_fps: [6.2, 2.7, 1.1, 0.9, 0.4, 0.7, 0.4],                   // CPU frames per second
+        gpu_fps: [64.5, 42.9, 27.3, 22.4, 18.1, 15.7, 12.6]             // GPU frames per second
+    };
+    // Note: Model order is YOLO11-N, YOLO11-S, YOLO11-M, YOLO11-L, YOLO11-X, RT-DETR-L, RT-DETR-X
+    const inferenceModels = ['YOLO11-N', 'YOLO11-S', 'YOLO11-M', 'YOLO11-L', 'YOLO11-X', 'RT-DETR-L', 'RT-DETR-X'];
+    const inferenceColors = [
+        modelColors[2], // YOLO11-N - Yellow
+        modelColors[3], // YOLO11-S - Teal
+        modelColors[4], // YOLO11-M - Blue
+        modelColors[5], // YOLO11-L - Purple
+        modelColors[6], // YOLO11-X - Green
+        modelColors[1], // RT-DETR-L - Orange
+        modelColors[0], // RT-DETR-X - Red
+    ];
+
+    // Inference Time Chart (dual y-axis)
+    const inferenceTimeCtx = document.getElementById('chart-inference-time') as HTMLCanvasElement;
+    if (inferenceTimeCtx) {
+        new Chart(inferenceTimeCtx, {
+            type: 'bar',
+            data: {
+                labels: inferenceModels,
+                datasets: [
+                    {
+                        label: 'CPU',
+                        data: inferenceData.cpu_ms,
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'GPU',
+                        data: inferenceData.gpu_ms,
+                        backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Mean Inference Time Comparison',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: { font: { size: 10 } }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.dataset.label}: ${context.raw} ms`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        max: 2800,
+                        title: {
+                            display: true,
+                            text: 'CPU Time (ms)',
+                            color: 'rgba(59, 130, 246, 1)'
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            color: 'rgba(59, 130, 246, 1)'
+                        },
+                        grid: {
+                            drawOnChartArea: true
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        max: 80,
+                        title: {
+                            display: true,
+                            text: 'GPU Time (ms)',
+                            color: 'rgba(34, 197, 94, 1)'
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            color: 'rgba(34, 197, 94, 1)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 9 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // FPS Chart (dual y-axis)
+    const fpsCtx = document.getElementById('chart-fps') as HTMLCanvasElement;
+    if (fpsCtx) {
+        new Chart(fpsCtx, {
+            type: 'bar',
+            data: {
+                labels: inferenceModels,
+                datasets: [
+                    {
+                        label: 'CPU',
+                        data: inferenceData.cpu_fps,
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'GPU',
+                        data: inferenceData.gpu_fps,
+                        backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Frames Per Second Comparison',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: { font: { size: 10 } }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.dataset.label}: ${context.raw} FPS`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        max: 8,
+                        title: {
+                            display: true,
+                            text: 'CPU FPS',
+                            color: 'rgba(59, 130, 246, 1)'
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            color: 'rgba(59, 130, 246, 1)'
+                        },
+                        grid: {
+                            drawOnChartArea: true
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        max: 70,
+                        title: {
+                            display: true,
+                            text: 'GPU FPS',
+                            color: 'rgba(34, 197, 94, 1)'
+                        },
+                        ticks: {
+                            font: { size: 10 },
+                            color: 'rgba(34, 197, 94, 1)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 9 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // GPU Speedup Factor Chart
+    const speedupCtx = document.getElementById('chart-speedup') as HTMLCanvasElement;
+    if (speedupCtx) {
+        // Calculate speedup: CPU_time / GPU_time
+        const speedupData = inferenceData.cpu_ms.map((cpu, i) =>
+            Math.round(cpu / inferenceData.gpu_ms[i])
+        );
+
+        new Chart(speedupCtx, {
+            type: 'bar',
+            data: {
+                labels: inferenceModels,
+                datasets: [{
+                    label: 'Speedup Factor',
+                    data: speedupData,
+                    backgroundColor: inferenceColors.map(c => c.bg),
+                    borderColor: inferenceColors.map(c => c.border),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'GPU Speedup vs CPU',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.raw}x faster on GPU`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Speedup Factor' },
+                        ticks: {
+                            font: { size: 10 },
+                            callback: (value) => value + 'x'
+                        }
+                    },
+                    y: {
+                        ticks: { font: { size: 9 } }
+                    }
+                }
+            }
+        });
+    }
+
+    // Model Size Chart
+    const modelSizeCtx = document.getElementById('chart-model-size') as HTMLCanvasElement;
+    if (modelSizeCtx) {
+        // Model file size from benchmark (in MB)
+        const modelSizeData = [5, 18, 39, 49, 109, 63, 129];
+
+        new Chart(modelSizeCtx, {
+            type: 'bar',
+            data: {
+                labels: inferenceModels,
+                datasets: [{
+                    label: 'Model Size',
+                    data: modelSizeData,
+                    backgroundColor: inferenceColors.map(c => c.bg),
+                    borderColor: inferenceColors.map(c => c.border),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Model Size',
+                        font: { size: 12, weight: 'normal' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.raw} MB`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Size (MB)' },
+                        ticks: {
+                            font: { size: 10 },
+                            callback: (value) => value + ' MB'
+                        }
+                    },
+                    y: {
+                        ticks: { font: { size: 9 } }
+                    }
+                }
+            }
+        });
+    }
+
+    // Comprehensive comparison chart (grouped bar)
+    const compCtx = document.getElementById('chart-comprehensive') as HTMLCanvasElement;
+    if (compCtx) {
+        new Chart(compCtx, {
+            type: 'bar',
+            data: {
+                labels: models,
+                datasets: [
+                    {
+                        label: 'mAP50-95',
+                        data: data['mAP50-95'],
+                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'mAP50',
+                        data: data['mAP50'],
+                        backgroundColor: 'rgba(255, 159, 64, 0.8)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Precision',
+                        data: data['Precision'],
+                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Recall',
+                        data: data['Recall'],
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Comprehensive Performance Comparison: All Metrics',
+                        font: { size: 14, weight: 'normal' }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: { font: { size: 11 } }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `${context.dataset.label}: ${(context.raw as number * 100).toFixed(1)}%`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1.0,
+                        ticks: {
+                            callback: (value) => (Number(value) * 100).toFixed(0) + '%',
+                            font: { size: 10 }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Score'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 10 },
+                            maxRotation: 45,
+                            minRotation: 45
+                        },
+                        title: {
+                            display: true,
+                            text: 'Model'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Copy BibTeX functionality
+    const copyButton = document.getElementById('copy-bibtex');
+    const bibtexCode = document.getElementById('bibtex');
+    const copyText = document.getElementById('copy-text');
+    const copyIcon = copyButton?.querySelector('i');
+    if (copyButton && bibtexCode && copyText && copyIcon) {
+        copyButton.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(bibtexCode.textContent || '');
+                copyText.textContent = 'Copied!';
+                copyIcon.className = 'ph ph-check text-sm';
+                copyButton.classList.remove('bg-[#f2f0ea]', 'hover:bg-[#dcdad4]', 'text-gray-600');
+                copyButton.classList.add('bg-green-100', 'text-green-700');
+                setTimeout(() => {
+                    copyText.textContent = 'Copy';
+                    copyIcon.className = 'ph ph-copy text-sm';
+                    copyButton.classList.remove('bg-green-100', 'text-green-700');
+                    copyButton.classList.add('bg-[#f2f0ea]', 'hover:bg-[#dcdad4]', 'text-gray-600');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    }
+</script>

@@ -1,6 +1,17 @@
+*.pdf
+
+# Astro
+.astro/
+
+# macOS
+.DS_Store
+
 .vscode/
 .zed/
 node_modules/
 dist/
 build/
 target/
+
+# Local Netlify folder
+.netlify

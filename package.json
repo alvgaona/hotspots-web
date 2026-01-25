@@ -10,9 +10,10 @@
 	},
 	"dependencies": {
 		"@astrojs/netlify": "^6.5.10",
-		"@fontsource-variable/lexend": "^5.2.11",
+		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
 		"@tailwindcss/vite": "^4.1.13",
 		"astro": "^5.13.7",
+		"chart.js": "^4.5.1",
 		"tailwindcss": "^4.1.13"
 	},
 	"devDependencies": {
